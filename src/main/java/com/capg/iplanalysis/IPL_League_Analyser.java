@@ -27,4 +27,10 @@ public class IPL_League_Analyser {
 		return toJson(sortedStateBatsmanList);
 	}
 
+	public String getMaximumBoundriesCricketers() {
+		List<Batsman> sortedStateBatsmanList = batsmanList.stream()
+				.sorted(Comparator.comparing(Batsman :: getBoundries).reversed()).collect(Collectors.toList());
+		return toJson(sortedStateBatsmanList);
+	}
+
 }
