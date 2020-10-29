@@ -30,4 +30,12 @@ public class IPL_League_Analyser_Test
 		System.out.println(sortedBatsmanArray[0].getAverage());
 		assertEquals("MS Dhoni", sortedBatsmanArray[0].getName());
 	}
+	
+	@Test
+	public void givenCSVFile_shouldReturn_CricketersWith_TopStrikingRates() {
+		String sortedBatsmanData = ipl_LeagueAnalyser.getBestStrikeRateCricketers();
+		Batsman[] sortedBatsmanArray = new Gson().fromJson(sortedBatsmanData, Batsman[].class);
+		System.out.println(sortedBatsmanArray[0].getName());
+		assertEquals("Ishant Sharma", sortedBatsmanArray[0].getName());
+	}
 }
