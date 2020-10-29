@@ -11,9 +11,9 @@ public class IPL_League_Analyser {
 		batsmanList = new CSVBatsman().loadBatsmanList(PATH);
 	}
 
-	public String getBestBattingAveragesCricketers() {
+	public String getBestBattingAveragesCricketers() {                      //UC1->UC5
 		List<Batsman> sortedStateBatsmanList = batsmanList.stream()
-				.sorted(Comparator.comparing(Batsman::getAverage).reversed()).collect(Collectors.toList());
+				.sorted(Comparator.comparing(Batsman::getAverage).thenComparing(Batsman::getStrikeRate).reversed()).collect(Collectors.toList());
 		return toJson(sortedStateBatsmanList);
 	}
 
