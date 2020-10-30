@@ -146,4 +146,12 @@ public class IPL_League_Analyser {
 		});
 		return allRounderList;
 	}
+
+	public String getMaximumHundredsCricketers() {
+		List<Batsman> sortedBatsmanList = batsmanList.stream()
+				.filter(n -> n.getCenturies() > 0)
+				.sorted(Comparator.comparing(Batsman::getCenturies).reversed().thenComparing(Batsman::getAverage).reversed())
+				.collect(Collectors.toList());
+		return toJson(sortedBatsmanList);
+	}
 }

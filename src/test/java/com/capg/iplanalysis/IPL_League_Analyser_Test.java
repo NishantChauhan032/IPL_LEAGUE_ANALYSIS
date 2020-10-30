@@ -118,4 +118,11 @@ public class IPL_League_Analyser_Test {
 		assertEquals("Andre Russell", sortedAllRounderArray[0].getName());
 		assertEquals("Kagiso Rabada", sortedAllRounderArray[1].getName());
 	}
+	
+	@Test
+	public void givenCSVFile_shouldReturn_CricketersWith_MaximumHundredsAnd_BestBattingAverages() {
+		String sortedBatsmanData = ipl_LeagueAnalyser.getMaximumHundredsCricketers();
+		Bowler[] sortedBowlerArray = new Gson().fromJson(sortedBatsmanData, Bowler[].class);
+		assertEquals("David Warner", sortedBowlerArray[0].getName());
+	}
 }
