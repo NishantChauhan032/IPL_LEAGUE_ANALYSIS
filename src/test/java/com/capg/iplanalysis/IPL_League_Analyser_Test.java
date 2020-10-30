@@ -120,14 +120,14 @@ public class IPL_League_Analyser_Test {
 	}
 	
 	@Test
-	public void givenCSVFile_shouldReturn_CricketersWith_MaximumHundredsAndBestBattingAverages() {
+	public void givenCSVFile_shouldReturn_CricketersWithMaximumHundredsAndBestBattingAverages() {
 		String sortedBatsmanData = ipl_league_analyser.getCricketerWithMaximumHundereds();
 		Bowler[] sortedBowlerArray = new Gson().fromJson(sortedBatsmanData, Bowler[].class);
 		assertEquals("David Warner", sortedBowlerArray[0].getName());
 	}
 	
 	@Test
-	public void givenCSVFile_shouldReturn_CricketersWith_ZeroHundredsAndFiftiesButBestBattingAverages() {
+	public void givenCSVFile_shouldReturn_CricketersWithZeroHundredsAndFiftiesButBestBattingAverages() {
 		String sortedBatsmanData = ipl_league_analyser.getCricketerWithBestAverageButLessThan50Runs();
 		Bowler[] sortedBowlerArray = new Gson().fromJson(sortedBatsmanData, Bowler[].class);
 		assertEquals("Marcus Stoinis", sortedBowlerArray[0].getName());
