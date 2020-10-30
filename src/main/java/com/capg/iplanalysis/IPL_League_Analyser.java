@@ -7,8 +7,13 @@ import com.google.gson.Gson;
 
 public class IPL_League_Analyser {
 	private List<Batsman> batsmanList = null;
+	private List<Bowler> bowlerList = null;
+	
 	public void loadBatsmanData(String PATH) throws IPLAnalyserException {
 		batsmanList = new CSVBatsman().loadBatsmanList(PATH);
+	}
+	public void loadBowlerData(String BOWLER_CSV_PATH) throws IPLAnalyserException {
+		bowlerList = new CSVBowler().loadBowlerList(BOWLER_CSV_PATH);
 	}
 
 	public String getBestBattingAveragesCricketers() {                      //UC1->UC5
@@ -38,6 +43,14 @@ public class IPL_League_Analyser {
 				.sorted(Comparator.comparing(Batsman::getRunsScored).thenComparing(Batsman::getAverage).reversed())
 				.collect(Collectors.toList());
 		return toJson(sortedStateBatsmanList);
+	}
+
+	public String getMaximumBowlingAverageCricketers() {
+		List<Bowler> sortedBowlerList = bowlerList.stream()
+				.filter(n -> n.getAverage()>0)
+				.sorted(Comparator.comparing(Bowler::getAverage))
+				.collect(Collectors.toList());
+		return toJson(sortedBowlerList);
 	}
 
 }

@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 public class IPL_League_Analyser_Test 
 {
 	private static final String BATSMAN_DATA_PATH = "./src/test/resources/BatsmanData.csv";
+	private static final String BOWLER_DATA_CSV_PATH = "./src/test/resources/BowlerData.csv";
 	IPL_League_Analyser ipl_LeagueAnalyser = null;
 	
 	@Before
@@ -19,6 +20,7 @@ public class IPL_League_Analyser_Test
 		ipl_LeagueAnalyser = new IPL_League_Analyser();
 		try {
 			ipl_LeagueAnalyser.loadBatsmanData(BATSMAN_DATA_PATH);
+			ipl_LeagueAnalyser.loadBowlerData(BOWLER_DATA_CSV_PATH);
 		} catch (IPLAnalyserException e) {
 		}
 	}
@@ -53,5 +55,13 @@ public class IPL_League_Analyser_Test
 		Batsman[] sortedBatsmanArray = new Gson().fromJson(sortedBatsmanData, Batsman[].class);
 		System.out.println(sortedBatsmanArray[0].getName() + sortedBatsmanArray[0].getAverage());
 		assertEquals("David Warner", sortedBatsmanArray[0].getName());
+	}
+	
+	@Test
+	public void givenCSVFile_shouldReturn_CricketersWith_BestBowlingAverages() {
+		String sortedBowlerData = ipl_LeagueAnalyser.getMaximumBowlingAverageCricketers();
+		Bowler[] sortedBowlerArray = new Gson().fromJson(sortedBowlerData, Bowler[].class);
+		System.out.println(sortedBowlerArray[0].getName() + sortedBowlerArray[0].getAverage());
+		assertEquals("Anukul Roy", sortedBowlerArray[0].getName());
 	}
 }
