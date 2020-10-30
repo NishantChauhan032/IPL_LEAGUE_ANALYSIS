@@ -78,7 +78,7 @@ public class IPL_League_Analyser_Test
 		String sortedBowlerData = ipl_LeagueAnalyser.getBestEconomyRateBowler();
 		Bowler[] sortedBowlerArray = new Gson().fromJson(sortedBowlerData, Bowler[].class);
 		System.out.println(sortedBowlerArray[0].getName() + sortedBowlerArray[0].getEconomy());
-		assertEquals("Shivam Dube", sortedBowlerArray[0].getName());
+		assertEquals("Shivam Dube", sortedBowlerArray[0].getName()); 
 	}
 }
 

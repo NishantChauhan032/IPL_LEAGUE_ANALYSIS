@@ -64,6 +64,6 @@ public class IPL_League_Analyser {
 		List<Bowler> sortedBowlerList = bowlerList.stream().sorted(Comparator.comparing(Bowler::getStrikeRate))
 				.collect(Collectors.toList());
 		return toJson(sortedBowlerList);
-	}
+	} 
 
 }
