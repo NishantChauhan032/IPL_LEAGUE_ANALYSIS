@@ -65,6 +65,13 @@ public class IPL_League_Analyser {
 		List<Bowler> sortedBowlerList = bowlerList.stream().sorted(Comparator.comparing(Bowler::getStrikeRate))
 				.collect(Collectors.toList());
 		return toJson(sortedBowlerList);
-	} 
+	}
+
+	public String getCricketerWithMaximumWickets() {
+		List<Bowler> sortedBowlerList = bowlerList.stream().filter(n -> n.getStrikeRate() > 0)
+				.sorted(Comparator.comparing(Bowler::getWicketsTaken).thenComparing(Bowler::getAverage).reversed())
+				.collect(Collectors.toList());
+		return toJson(sortedBowlerList);
+	}
 
 }

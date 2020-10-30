@@ -94,5 +94,13 @@ public class IPL_League_Analyser_Test
 		Bowler[] sortedBowlerArray = new Gson().fromJson(sortedBowlerData, Bowler[].class);
 		assertEquals("Anukul Roy", sortedBowlerArray[0].getName());
 	}
+	
+	@Test
+	public void givenCSVFile_shouldReturn_CricketersWith_MaximumWickets_WithBestBowlingAverages() {
+		String sortedBowlerData = ipl_LeagueAnalyser.getCricketerWithMaximumWickets();
+		Bowler[] sortedBowlerArray = new Gson().fromJson(sortedBowlerData, Bowler[].class);
+		System.out.println(sortedBowlerArray[0].getName() + sortedBowlerArray[0].getWicketsTaken());
+		assertEquals("Imran Tahir", sortedBowlerArray[0].getName());
+	}
 }
 
