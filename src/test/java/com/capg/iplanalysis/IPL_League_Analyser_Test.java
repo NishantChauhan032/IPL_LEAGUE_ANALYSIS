@@ -102,5 +102,15 @@ public class IPL_League_Analyser_Test
 		System.out.println(sortedBowlerArray[0].getName() + sortedBowlerArray[0].getWicketsTaken());
 		assertEquals("Imran Tahir", sortedBowlerArray[0].getName());
 	}
+	
+	@Test
+	public void givenCSVFile_shouldReturn_CricketersWith_BattingAndBowlingAverages() {
+		String sortedBowlerData = ipl_LeagueAnalyser.getBattingAndBowlingAveragesCricketers();
+		AllRounder[] sortedAllRounderArray = new Gson().fromJson(sortedBowlerData, AllRounder[].class);
+		System.out.println(sortedAllRounderArray[1].getName() + sortedAllRounderArray[1].getBattingAverage()
+				+ sortedAllRounderArray[1].getBowlingAverage());
+		assertEquals("Andre Russell", sortedAllRounderArray[0].getName());
+		assertEquals("Kagiso Rabada", sortedAllRounderArray[1].getName());
+	}
 }
 
