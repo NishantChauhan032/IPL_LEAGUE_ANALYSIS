@@ -56,7 +56,8 @@ public class IPL_League_Analyser {
 
 	public String getMaximumBowlingStrikeRatesCricketers() {
 		List<Bowler> sortedBowlerList = bowlerList.stream().filter(n -> n.getStrikeRate() > 0)
-				.sorted(Comparator.comparing(Bowler::getStrikeRate)).collect(Collectors.toList());
+				.sorted(Comparator.comparing(Bowler::getStrikeRate).thenComparing(Bowler::getHauls))
+				.collect(Collectors.toList());
 		return toJson(sortedBowlerList);
 	}
 

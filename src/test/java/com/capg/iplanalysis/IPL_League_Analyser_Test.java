@@ -80,5 +80,12 @@ public class IPL_League_Analyser_Test
 		System.out.println(sortedBowlerArray[0].getName() + sortedBowlerArray[0].getEconomy());
 		assertEquals("Shivam Dube", sortedBowlerArray[0].getName());
 	}
+	
+	@Test
+	public void givenCSVFile_shouldReturn_BowlerWith_BestBowlingStrikeRatesAndWicketHauls() {
+		String sortedBowlerData = ipl_LeagueAnalyser.getMaximumBowlingStrikeRatesCricketers();
+		Bowler[] sortedBowlerArray = new Gson().fromJson(sortedBowlerData, Bowler[].class);
+		assertEquals("Alzarri Joseph", sortedBowlerArray[0].getName());
+	}
 }
 
